@@ -6,6 +6,12 @@
 
             public function index() {
                 //default controller method according to routing
-                $this -> view('Main/index');
+                $this->view('Main/index');
+            }
+
+            public function clock() {
+                $clock = new \DateTime();
+        //var_dump(json_encode($clock));
+                echo json_encode($clock);   
             }
         }

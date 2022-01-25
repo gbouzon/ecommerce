@@ -9,23 +9,17 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
 
-        <title>Animal index</title>
+        <title>Contact Information</title>
     </head>
     <body>
-        <h1>All Animals</h1>
-        <p>This is the list of animals.</p>
-        <table>
-            <tr>
-                <th>Animal Name:</th>
-                <th>Date of birth:</th>
-            </tr>
+        <h1>Contact Us</h1>
+        <dl>
         <?php
-            foreach($data as $animalJSON) {
-                $animal = json_decode($animalJSON);
-                echo "<tr><td>$animal->name</td><td>$animal->dob</td><tr>";
+            foreach($data as $key => $value) {
+                echo "<dt>$key</dt><dd>$value</dd>";
             }
         ?>
-        </table>
+        </dl>
         <?php
             $this->view ('shared/navigation');
         ?>

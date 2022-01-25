@@ -28,24 +28,24 @@
 
             if (isset($url[0])) { //checks if the given parameter exists and has a value other than null
                 if (file_exists('app/controllers/' . $url[0] . '.php')) { //note that periods are used for concatenation
-                    $this -> controller = $url[0];
+                    $this->controller = $url[0];
                 }
                 //this basically consumes $url[0]. look into whether this should be in an else block (I don't think so)
                 unset($url[0]); 
             }
-            $this -> controller = 'app\\controllers\\' . $this -> controller;
-            $this -> controller = new $this -> controller; //app\controllers\Animal
+            $this->controller = 'app\\controllers\\' . $this->controller;
+            $this->controller = new $this->controller; //app\controllers\Animal
 
             if (isset($url[1])) {
-                if (method_exists($this -> controller, $url[1])) 
-                    $this -> method = $url[1];
+                if (method_exists($this->controller, $url[1])) 
+                    $this->method = $url[1];
 
                 unset($url[1]);
             }
             //at this point, our url array looks like this -> [, , 'data', 'data'] -> positions 0 and 1 are empty because we consumed them
-            $this -> params = $url ? array_values($url) : []; // if url isn't null we're calling array_values method, otherwise params are empty
+            $this->params = $url ? array_values($url) : []; // if url isn't null we're calling array_values method, otherwise params are empty
 
-            call_user_func_array([$this -> controller, $this -> method], $this -> params); //-> calling a user defined function that takes parameters
+            call_user_func_array([$this->controller, $this->method], $this->params); //-> calling a user defined function that takes parameters
             //first param ^ takes the method in the controller and second param defines the parameters needed to call that method
         }
 

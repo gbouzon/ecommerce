@@ -21,12 +21,8 @@
             <label class = "form-label">Birth date: <input class = "form-control" type = "date" name = "dob"></label> <br> <br>
             <input class = "form-control" type = "submit" name = "action" value = "Create!">
         </form>
-
-        <ul>
-            <li><a href = "/Animal/index"> Animal index</a></li>
-            <li><a href = "/Animal/create"> Animal create</a></li>
-            <li><a href = "/Main/index"> Main index</a></li>
-            <li><a href = "/Main/other"> Other method in Main</a></li>
-        </ul>
+        <?php
+            $this->view ('shared/navigation');
+        ?>
     </body>
 </html>

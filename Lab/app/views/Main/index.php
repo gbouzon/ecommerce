@@ -13,13 +13,15 @@
         <title>Landing page</title>
     </head>
     <body>
-        <h1>Landing page</h1>
-        <p>Welcome to this landing page</p>
-        <ul>
-            <li><a href = "/Animal/index"> Animal index</a></li>
-            <li><a href = "/Animal/create"> Animal create</a></li>
-            <li><a href = "/Main/index"> Main index</a></li>
-            <li><a href = "/Main/other"> other method in Main</a></li>
-        </ul>
+        <div class = "container">
+            <?php
+                $this->view ('shared/clock');
+            ?>
+            <h1>Landing page</h1>
+            <p>Welcome to this landing page</p>
+            <?php
+                $this->view ('shared/navigation');
+            ?>
+        </div>
     </body>
 </html>
