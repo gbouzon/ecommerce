@@ -18,18 +18,11 @@
             <tr>
                 <th>Animal Name:</th>
                 <th>Date of birth:</th>
-                <th>Actions</th>
             </tr>
         <?php
-            foreach($data as $animal) {
-                echo "<tr><td>$animal->name</td><td>$animal->dob</td>
-                <td>
-                    <a href = '/Animal/update/$animal->animal_id'>update</a>
-                    <a href = '/Animal/delete/$animal->animal_id'>delete</a>
-                    <a href = '/Animal/details/$animal->animal_id'>details</a>
-                </td>
-                
-                <tr>";
+            foreach($data as $animalJSON) {
+                $animal = json_decode($animalJSON);
+                echo "<tr><td>$animal->name</td><td>$animal->dob</td><tr>";
             }
         ?>
         </table>
