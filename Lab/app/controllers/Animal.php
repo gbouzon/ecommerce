@@ -3,13 +3,15 @@
 
         class Animal extends \app\core\Controller {  
 
-            public function index() {
-                $myAnimal = new \app\models\Animal();
-                $animals = $myAnimal->getAll();
-                $this->view('Animal/index', $animals);
+            public function index($client_id) { //animals that belong to someone
+                $myClient = new \app\models\Client();
+                $myClient = $myClient->get($client_id);
+                $animals = $myClient->getAnimals();
+                $this->view('Animal/index', ['client'=>$myClient, 'animals'=>$animals]);
             }
 
-            public function create() { //for create views, I'd normally want to ask the user for input so -> forms
+            //an animal belongs to someone so client needed
+            public function create($client_id) { //for create views, I'd normally want to ask the user for input so -> forms
                 if (!isset($_POST['action'])) //display view if I don't submit form
                     $this -> view('Animal/create');
 
@@ -56,6 +58,4 @@
             public function createInDB() {
                 $myAnimal = new \app\models\Animal();
             }
-
-
         }

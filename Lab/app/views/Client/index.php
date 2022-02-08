@@ -9,25 +9,25 @@
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
         </script>
 
-        <title>Animal index</title>
+        <title>Client index</title>
     </head>
     <body>
-        //TODO: add the client to the view for context
-        <h1>All Animals</h1>
-        <p>This is the list of animals.</p>
+        <h1>All Clients</h1>
+        <p>This is the list of clients.</p>
         <table>
             <tr>
-                <th>Animal Name:</th>
-                <th>Date of birth:</th>
-                <th>Actions</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Notes</th>
+                <th>Phone</th>
             </tr>
         <?php
-            foreach($data['animals'] as $animal) {
-                echo "<tr><td>$animal->name</td><td>$animal->dob</td>
+            foreach($data as $client) {
+                echo "<tr><td>$client->first_name</td><td>$client->last_name</td><td>$client->notes</td><td>$client->phone</td>
                 <td>
-                    <a href = '/Animal/update/$animal->animal_id'>update</a>
-                    <a href = '/Animal/delete/$animal->animal_id'>delete</a>
-                    <a href = '/Animal/details/$animal->animal_id'>details</a>
+                    <a href = '/Client/update/$client->client_id'>update</a>
+                    <a href = '/Client/delete/$client->client_id'>delete</a>
+                    <a href = '/Client/details/$client->client_id'>details</a>
                 </td>
                 
                 <tr>";

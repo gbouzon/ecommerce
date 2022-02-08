@@ -8,10 +8,6 @@
             //connect to a database so our models can talk to the database
             function __construct() {
                 //this keyword is used for instance variables and self is used for class variables
-                $host = 'localhost';
-                $DBName = 'myapplication';
-                $user = 'root';
-                $password = '';
-                self::$_connection = new \PDO("mysql:host=$host;dbname=$DBName", $user, $password);
+                self::$_connection = DBConnection::getInstance(); //instead of doing DBConnection.getInstance() like we do in JS or Java we use ::
             }
         }
