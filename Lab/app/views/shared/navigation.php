@@ -1,11 +1,27 @@
-<ul>
-    <li><a href = "/Animal/index"> Animal index</a></li>
-    <li><a href = "/Animal/create"> Animal create</a></li>
-    <li><a href = "/Animal/update"> Animal update</a></li>
-    <li><a href = "/Animal/contactInformation">Contact our animal shelter</a></li>
-    <li><a href = "/Client/index"> Client index</a></li>
-    <li><a href = "/Client/create"> Client create</a></li>
-    <li><a href = "/Client/update"> Client update</a></li>
-    <li><a href = "/Main/index"> Main index</a></li>
-    <li><a href = "/Main/other"> other method in Main</a></li>
-</ul>
+<div style="<?= _('float:left') ?>;height:100%;margin:10px">
+	<dl>
+		<dt><?= _('Navigation') ?></dt>
+		<dd>
+			<ul>
+				<li><a href='/ServiceAPI/getAPIData'><?= _('View APIs (assignment)') ?></a></li>
+				<li><a href='/Client/index'><?= _('Client index') ?></a></li>
+				<li><a href='/Client/create'><?= _('Client create') ?></a></li>
+			<?php if(!isset($_SESSION['user_id'])){ ?>
+				<li><a href='/User/login'><?= _('Log in') ?></a></li>
+			<?php }else{ ?>
+				<li><a href='/User/logout'><?= _('Log out') ?></a></li>
+			<?php } ?>
+			</ul>
+		</dd>
+		<dt><?= _('Languages') ?></dt>
+		<dd>
+			<ul>
+			<?php
+			global $localizations;
+			foreach ($localizations as $locale) {
+				echo "<li><a href='?lang=$locale'>".\Locale::getDisplayName($locale, $locale).'</a></li>';
+			}
+			?>
+			</ul>
+		</dd>
+</div>

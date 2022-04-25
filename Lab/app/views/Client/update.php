@@ -1,28 +1,33 @@
-<html>
-    <head>
-        <!-- CSS only -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
-        <!-- JavaScript Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-        </script>
+<html dir='<?= _('ltr') ?>'>
+<head>
+	<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<title><?= _('Client Update') ?></title>
+</head>
+<body>
+	<div class='container'>
+		<?php
+			$this->view('shared/navigation');
+		?>
+		<?php
+			$this->view('shared/clock');
+		?>
 
-        <title>Animal Create</title>
-    </head>
-    <body>
-        <h1>Create an Animal</h1>
+	<h1><?= _('Client update') ?></h1>
+	<p><?= _('Please enter the details of the client that you want to update.') ?></p>
+	<form method='post' action=''>
+		<label class='form-label'><?= _('First name') ?>:<input type='text' name='first_name' class='form-control' value='<?= $data->first_name?>' /></label><br>
+		<label class='form-label'><?= _('Last name') ?>:<input type='text' name='last_name' class='form-control' value='<?= $data->last_name?>' /></label><br>
+		<label class='form-label'><?= _('Notes') ?>:<textarea name='notes' class='form-control'><?= $data->notes?></textarea></label><br>
+		<label class='form-label'><?= _('Email') ?>:<input type='text' name='email' class='form-control' value='<?= $data->email?>' /></label><br>
+<?php
+	$this->view('Client/addressForm', $data);
+?>
 
-        <p>Please enter the details of the animal you want to create.</p>
-
-        <form method = "POST" action = "">
-            <label class = "form-label">Animal name: <input class = "form-control" type = "text" name = "name" value = '<?=$data->name ?>'</label> <br> <br>
-            <label class = "form-label">Birth date: <input class = "form-control" type = "date" name = "dob" value = '<?=$data->dob ?>'></label> <br> <br>
-            <input class = "form-control" type = "submit" name = "action" value = "Create!">
-        </form>
-        <?php
-            $this->view ('shared/navigation');
-        ?>
-    </body>
+		<label class='form-label'><input type="submit" name='action' value='<?= _('Update!') ?>' class='form-control' /></label>
+	</form>
+	</div>
+</body>
 </html>

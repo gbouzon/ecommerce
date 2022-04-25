@@ -1,13 +1,31 @@
 <?php
-    namespace app\core;
+namespace app\core;
 
-        class Model {
+class Model{
 
-            protected static $_connection; //start with an underscore because connection is a reserved keyword
-            
-            //connect to a database so our models can talk to the database
-            function __construct() {
-                //this keyword is used for instance variables and self is used for class variables
-                self::$_connection = DBConnection::getInstance(); //instead of doing DBConnection.getInstance() like we do in JS or Java we use ::
-            }
-        }
+	protected static $_connection;
+	//connect to the database
+	function __construct(){
+		self::$_connection = DBConnection::getInstance();
+	}
+
+	function isValid(){//return true if the object has valid data
+		$reflection = new \ReflectionClass($this);
+
+		//get the properties
+		$properties = $reflection->getProperties(\ReflectionProperty::IS_PUBLIC);
+		foreach ($properties as $property) {
+			//get all attributes, these are tests
+			$validators = $property->getAttributes();
+			$theData = $property->getValue($this);//get the value
+			foreach ($validators as $validator) {
+				//run the test
+				$test = $validator->newInstance();
+				if(!$test->isValid($theData))
+					return false;
+			}
+		}
+		return true;
+	}
+
+}
